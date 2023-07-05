@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DESM1</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="menu">
+      <button class="menu-button" onclick="showPage(0)">Home</button>
+      <button class="menu-button" onclick="showPage(1)">País</button>
+    </div>
+
+    <div class="page" id="homePage">
+      <div class="kpis">
+        <div class="kpi">
+          <p>Total Confirmados</p>
+          <p id="totalConfirmados"></p>
+        </div>
+        <div class="kpi">
+          <p>Total Mortes</p>
+          <p id="totalMortes"></p>
+        </div>
+        <div class="kpi">
+          <p>Total Recuperados</p>
+          <p id="totalRecuperados"></p>
+        </div>
+        <div class="kpis-footer" id="dataAtualizacao"></div>
+      </div>
+
+      <div class="chart-pie">
+        <h1>Distribuição de Novos Casos</h1>
+        <canvas id="chart-pie-covid"></canvas>
+      </div>
+
+      <div class="chart-bar">
+        <h1>Total de Mortes por País - Top 10</h1>
+        <canvas id="chart-bar-covid"></canvas>
+      </div>
+    </div>
+
+    <div class="page" id="paisPage">
+      <div class="filter">
+        <div class="filter-field">
+          <label for="dataInicio">Data Início:</label>
+          <input
+            type="date"
+            id="dataInicio"
+            name="dataInicio"
+            onchange="getDates(this)"
+          />
+        </div>
+        <div class="filter-field">
+          <label for="dataFim">Data Fim:</label>
+          <input
+            type="date"
+            id="dataFim"
+            name="dataFim"
+            onchange="getDates(this)"
+          />
+        </div>
+        <div class="filter-field">
+          <label for="pais">País:</label>
+          <select name="pais" id="paisOptions"></select>
+        </div>
+        <div class="filter-field">
+          <label for="pais">Dados:</label>
+          <select name="pais" id="dadosOptions"></select>
+        </div>
+      </div>
+      <div class="datas">
+        <div class="chart-line" id="chart-line-covid-wrapper">
+          <h1>Curva Diária da COVID-19</h1>
+          <canvas id="chart-line-covid"></canvas>
+        </div>
+        <div class="kpis-country">
+          <div class="kpi-country">
+            <p>Total de Confirmados</p>
+            <p id="totalConfirmadosPais"></p>
+          </div>
+          <div class="kpi-country">
+            <p>Total de Mortes</p>
+            <p id="totalMortesPais"></p>
+          </div>
+          <div class="kpi-country">
+            <p>Total de Recuperados</p>
+            <p id="totalRecuperadosPais"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page" id="top5Page"></div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
