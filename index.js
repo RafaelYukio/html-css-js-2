@@ -18,6 +18,7 @@ axios
       globalData.NewDeaths,
       globalData.NewRecovered
     );
+    
     createBarCharts(orderByDeaths(data.Countries, "TotalDeaths").slice(0, 10));
   })
   .catch((error) => console.error(error));
